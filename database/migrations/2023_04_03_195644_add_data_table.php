@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('data', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('set');
-            $table->string('code', 20);
+            $table->string('code', 40);
             $table->longText('value');
             $table->timestamps();
 

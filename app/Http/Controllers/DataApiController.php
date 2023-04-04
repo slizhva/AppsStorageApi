@@ -51,10 +51,10 @@ class DataApiController extends Controller
 
         $value = Data::where('set', $set[0]['id'])
             ->where('code', $this->getRequestData($request, 'code'))
-            ->get(['value'])
+            ->get(['code', 'value'])
             ->toArray();
 
-        if (empty($value[0]['value'])) {
+        if (empty($value[0])) {
             return response()->json([
                 'status' => false,
                 'message' => 'data not found',
@@ -63,7 +63,7 @@ class DataApiController extends Controller
 
         return response()->json([
             'status' => true,
-            'value' => $value[0]['value'],
+            'value' => $value[0]
         ]);
     }
 
